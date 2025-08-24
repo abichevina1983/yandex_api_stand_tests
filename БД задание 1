@@ -1,0 +1,22 @@
+Подключение к серверу ssh d69793e0-9a1e-402d-a02d-a1b37184b315@serverhub.praktikum-services.ru -p 4554
+psql -U morty -d scooter_rent
+# Пароль: smith
+
+bash
+morty@efcae235581f:~$
+
+
+sql
+SELECT c.login,
+COUNT(o.id) AS orders_count
+FROM "Couriers" AS c
+JOIN "Orders" AS o ON c.id = o."courierId"
+WHERE o."inDelivery" = true
+GROUP BY c.login;
+
+
+ login | delivery_count
+-------+----------------
+ ninja |              2
+(1 row)
+
